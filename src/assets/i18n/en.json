@@ -1,0 +1,87 @@
+{
+    "LOGIN": {
+        "Title": "LOGIN TO YOUR ACCOUNT",
+        "BTN": "LOGIN",
+        "Fields": {
+            "Email": "Email",
+            "Password": "Password"                
+        },
+        "FieldsRequireds": {
+            "EmailRequired": "Email is required",
+            "EmailValid": "Please enter a valid email address",
+            "PasswordRequired": "Password is required"
+        },
+        "Texts": {
+            "Forgot": "Forgot Password?",
+            "Account": "Don't have an account?",
+            "Create": "Create an account" 
+        }
+    },
+    "REGISTER": {
+        "Title": "CREATE YOUR ACCOUNT HERE",
+        "BTN": "CREATE AN ACCOUNT",
+        "CHECK": "I read and accept",
+        "COMBONAME": "Languages",
+        "Fields": {
+            "Name": "Name",
+            "Email": "Email",
+            "Password": "Password",
+            "ConfirmPassword": "Confirm Password"            
+        },
+        "FieldsRequireds": {
+            "NameRequired": "Name is required",
+            "EmailValid": "Please enter a valid email address",
+            "PasswordRequired": "Password is required",
+            "ConfirmPasswordRequired": "Password confirmation is required",
+            "PasswordRequiredValid": "Passwords must match"
+        },
+        "Links": {
+            "Terms": "terms and conditions",
+            "LogIn": "Login"
+        },
+        "Texts": {
+            "Account": "Already have an account?"
+        },
+        "ERROR_CREATEUSER": "Erro ao tentar criar usuário.",
+        "ERROR_CREATEUSER_LK": "Fechar"
+    },
+    "MAIL-CONFIRM": {
+        "Title": "Confirm your email address!",
+        "TEXT01": "A confirmation e-mail has been sent to ",
+        "TEXT02": "Check your inbox and click on the \"Confirm my email\" link to confirm your email address.",
+        "BACK": "Go back to login page"        
+    },
+    "VALIDATED-MAIL": {
+        "Title": "Email validated successfully!",
+        "Sub-Title": "AttInvestment",
+        "BACK": "Enter system"        
+    },
+    "FORGOT-PWD": {
+        "Title": "RECOVER YOUR PASSWORD",
+        "BTN": "SEND RESET LINK",
+        "BACK": "Go back to login",
+        "Fields": {
+            "Email": "Email"
+        },
+        "FieldsRequireds": {
+            "EmailRequired": "Email is required",
+            "EmailValid": "Please enter a valid email address"
+        }           
+    },
+    "HOME": {
+        "Profile": "My Profile",
+        "Logout": "Logout"
+    },
+    "LANGbr": "Portugues Br",
+    "LANGen": "English",
+    "LANGes": "Spanish",
+    "NAV": {
+        "Home": "Home",
+        "Info": "Information",
+        "Legis": "Legislation",
+        "Person": "My Profile",
+        "Basic": "Basic Information",
+        "Compl": "Contact information",
+        "Reset": "Change Password"
+    }
+}

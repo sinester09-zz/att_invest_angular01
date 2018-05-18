@@ -1,0 +1,159 @@
+{
+    "LOGIN": {
+        "Title": "FAÇA LOGIN NA SUA CONTA",
+        "BTN": "ENTRAR",
+        "Fields": {
+            "Email": "E-mail",
+            "Password": "Senha"                
+        },
+        "FieldsRequireds": {
+            "EmailRequired": "E-mail é obrigatório",
+            "EmailValid": "Por favor insira um endereço de e-mail válido",
+            "PasswordRequired": "Senha é obrigatória"
+        },
+        "Texts": {
+            "Forgot": "Esqueceu a senha?",
+            "Account": "Não tem uma conta?",
+            "Create": "Crie a sua conta aqui" 
+        }
+    },
+    "REGISTER": {
+        "Title": "CRIE A SUA CONTA AQUI",
+        "BTN": "CRIAR CONTA",
+        "CHECK": "Eu li e aceito",
+        "COMBONAME": "Idiomas",
+        "Fields": {
+            "Name": "Nome",
+            "Email": "E-mail",
+            "Password": "Senha",
+            "ConfirmPassword": "Confirme Senha"            
+        },
+        "FieldsRequireds": {
+            "NameRequired": "Nome é obrigatório",
+            "EmailValid": "Por favor insira um endereço de e-mail válido",
+            "PasswordRequired": "Senha é obrigatória",
+            "ConfirmPasswordRequired": "Confirmação senha é obrigatória",
+            "PasswordRequiredValid": "As senhas devem corresponder"
+        },
+        "Links": {
+            "Terms": "termos e condições",
+            "LogIn": "Entrar"
+        },
+        "Texts": {
+            "Account": "Já possui uma conta?"
+        },
+        "ERROR_CREATEUSER": "Erro ao tentar criar usuário.",
+        "ERROR_CREATEUSER_LK": "Fechar"
+    },
+    "MAIL-CONFIRM": {
+        "Title": "Confirme seu endereço de e-mail!",
+        "TEXT01": "Um email de confirmação foi enviado para ",
+        "TEXT02": "Verifique sua caixa de entrada e clique no \"Confirme meu email\" link para confirmar seu endereço de e-mail.",
+        "BACK": "Volte para a página de login"        
+    },
+    "VALIDATED-MAIL": {
+        "Title": "E-mail validado com sucesso!",
+        "Sub-Title": "AttInvestment",
+        "BACK": "Entrar no sistema"        
+    },
+    "FORGOT-PWD": {
+        "Title": "RECUPERE SUA SENHA",
+        "BTN": "ENVIAR RESET LINK",
+        "BACK": "Volte para a página de login",
+        "Fields": {
+            "Email": "E-mail"
+        },
+        "FieldsRequireds": {
+            "EmailRequired": "E-mail é obrigatório",
+            "EmailValid": "Por favor insira um endereço de e-mail válido"
+        }        
+    },
+    "HOME": {
+        "Profile": "Meu Perfil",
+        "Logout": "Sair"
+    },
+    "LANGbr": "Português Br",
+    "LANGen": "Inglês",
+    "LANGes": "Espanhol",
+    "NAV": {
+        "Home": "Início",
+        "Info": "Informações",
+        "Legis": "Legislação",
+        "Person": "Meus Dados",
+        "Basic": "Informações Básicas",
+        "Compl": "Informações Contato",
+        "Bank": "Informações Bancárias",
+        "Doc": "Documentos",
+        "Reset": "Mudar Senha"
+    },
+
+
+     "BASIC": {
+        "Title": "Informações Básicas",
+        "BTN": "Salvar",
+        "COMBONAME": "Idiomas",
+        "Fields": {
+        "Name": "Nome de exibiçao",
+            "Email": "Endereço de E-mail"
+              
+        },
+        "FieldsRequireds": {
+            "NameRequired": "Nome é obrigatório",
+            "EmailValid": "Por favor insira um endereço de e-mail válido"
+
+        },
+      
+     
+        "ERROR_BASIC": "Erro ao tentar cadastrar os dados básicos do usuário."
+     
+    },
+
+     "COMPL": {
+        "Title": "Informações de Contato",
+        "BTN": "Salvar",
+        "COMBONAME": "Pais",
+        "COMBONAME2": "Estado",
+        "Fields": {
+        "City": "Cidade",
+        "ZIP": "CEP",
+        "Street":"Logradouro",
+        "Number":"Número",
+        "Complement":"Complemento"
+              
+        },
+        "FieldsRequireds": {
+            "CityRequired": "Cidade é obrigatório",
+            "ZIPRequired": "CEP é obrigatorio",
+            "StreetRequired": "Logradouro é obrigatorio",
+            "NumberRequired": "Número é obrigatorio"
+        },
+      
+     
+        "ERROR_BASIC": "Erro ao tentar cadastrar os dados de contato do usuário."
+     
+    },
+
+    
+
+"BANK": {
+        "Title": "Informações Bancarias",
+        "BTN": "Salvar",
+        "COMBONAME": "Tipo",
+        "Fields": {
+        "Bank": "Banco",
+        "Branch": "Agência",
+        "account":"Conta Corrente"
+        },
+        "FieldsRequireds": {
+            "BankRequired": "Banco é obrigatório",
+            "BranchRequired": "Agência é obrigatoria",
+            "AccountRequired": "Conta Corrente é obrigatoria"
+         
+        },
+      
+     
+        "ERROR_BASIC": "Erro ao tentar cadastrar os dados de contato do usuário."
+     
+    }
+
+}

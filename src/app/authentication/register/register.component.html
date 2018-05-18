@@ -1,0 +1,80 @@
+<div id="register" fxLayout="column" appPerfectScrollbar>
+
+    <div id="register-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="register-form" *appIfOnDom [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+            <div class="logo">
+                <img src="assets/images/logos/Logo_triangulo_solo_large.png">
+            </div>
+
+            <div class="title">{{ 'REGISTER.Title' | translate }}</div>
+
+            <form name="registerForm" [formGroup]="registerForm"  (ngSubmit)="registerUser(); $event.preventDefault()" #f="ngForm" novalidate>
+
+                <mat-form-field>
+                    <input matInput type="text" placeholder="{{'REGISTER.Fields.Name' | translate}}" name="username" formControlName="username" required>
+                    <mat-error *ngIf="registerFormErrors.username.required">
+                        {{ 'REGISTER.FieldsRequireds.NameRequired' | translate }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="{{'REGISTER.Fields.Email' | translate}}" formControlName="email" required>
+                    <mat-error *ngIf="registerFormErrors.email.required">
+                        {{ 'REGISTER.FieldsRequireds.EmailRequired' | translate }}
+                    </mat-error>
+                    <mat-error *ngIf="!registerFormErrors.email.required && registerFormErrors.email.email">
+                        {{ 'REGISTER.FieldsRequireds.EmailValid' | translate }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="password" placeholder="{{'REGISTER.Fields.Password' | translate}}" formControlName="password" required>
+                    <mat-error *ngIf="registerFormErrors.password.required">
+                        {{ 'REGISTER.FieldsRequireds.PasswordRequired' | translate }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="password" placeholder="{{'REGISTER.Fields.ConfirmPassword' | translate}}" formControlName="passwordConfirm" required>
+                    <mat-error *ngIf="registerFormErrors.passwordConfirm.required">
+                        {{ 'REGISTER.FieldsRequireds.ConfirmPasswordRequired' | translate }}
+                    </mat-error>
+                    <mat-error *ngIf="registerFormErrors.passwordConfirm.passwordsNotMatch">
+                        {{ 'REGISTER.FieldsRequireds.PasswordRequiredValid' | translate }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select placeholder="{{'REGISTER.COMBONAME' | translate}}" formControlName="language" (ngModelChange)="setLanguage($event)" required>
+                        <mat-option *ngFor="let lang of languages" value="{{lang.id}}">
+                            <span class="iso">{{lang.title}}</span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="terms" fxLayout="row" fxLayoutAlign="center center">
+                    <mat-checkbox name="terms" aria-label="{{ 'REGISTER.CHECK' | translate }}" formControlName="policy" required>
+                        <span>{{ 'REGISTER.CHECK' | translate }}</span>
+                    </mat-checkbox>
+                    <a href="#">{{ 'REGISTER.Links.Terms' | translate }}</a>
+                </div>
+
+                <button mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT"
+                        [disabled]="registerForm.invalid">
+                        {{ 'REGISTER.BTN' | translate }}
+                </button>
+
+            </form>
+
+            <div class="register" fxLayout="column" fxLayoutAlign="center center">
+                <span class="text">{{ 'REGISTER.Texts.Account' | translate }}</span>
+                <a class="link" [routerLink]="'/login'">{{ 'REGISTER.Links.LogIn' | translate }}</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

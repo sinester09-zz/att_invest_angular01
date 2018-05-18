@@ -1,0 +1,42 @@
+<mat-sidenav-container>
+    <div id="app-home-content">
+
+        <!-- TOOLBAR: Above -->
+        <ng-container *ngIf="appSettings.layout.toolbar === 'above'">
+            <app-toolbar class="above" [ngClass]="appSettings.colorClasses.toolbar"></app-toolbar>
+        </ng-container>
+        <!-- / TOOLBAR: Above -->
+
+        <!-- NAVBAR: Top -->
+        <app-navbar layout="horizontal"
+                     class="top-navbar" fxHide fxShow.gt-md
+                     [ngClass]="appSettings.colorClasses.navbar"
+                     *ngIf="appSettings.layout.navigation === 'top'">
+        </app-navbar>
+        <!-- / NAVBAR: Top -->
+
+        <div id="wrapper">
+
+            <!-- NAVBAR: Left -->
+            <app-sidebar [name]="'navbar'"
+                          [folded]="appSettings.layout.navigationFolded"
+                          [lockedOpen]="'gt-md'"
+                          class="left-navbar" [ngClass]="appSettings.colorClasses.navbar"
+                          *ngIf="appSettings.layout.navigation === 'left' || appSettings.layout.navigation === 'top'">
+                <app-navbar layout="vertical"></app-navbar>
+            </app-sidebar>
+            <!-- / NAVBAR: Left -->
+
+            <div class="content-wrapper">
+
+                <!-- TOOLBAR: Below -->
+                <ng-container *ngIf="appSettings.layout.toolbar === 'below'">
+                    <app-toolbar class="below" [ngClass]="appSettings.colorClasses.toolbar"></app-toolbar>
+                </ng-container>
+                <!-- / TOOLBAR: Below -->
+
+                    <app-content></app-content>
+            </div>
+        </div>            
+    </div>
+</mat-sidenav-container>

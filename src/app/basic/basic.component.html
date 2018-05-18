@@ -1,0 +1,53 @@
+<div id="basic" fxLayout="column" appPerfectScrollbar>
+
+    <div id="basic-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="basic-form" >
+
+        
+
+            <h1>{{ 'BASIC.Title' | translate }}</h1>
+
+            <form name="basicForm" [formGroup]="basicForm"  (ngSubmit)="basicUser(); $event.preventDefault()" #f="ngForm" novalidate>
+
+                <mat-form-field>
+                    <input matInput type="text" placeholder="{{'BASIC.Fields.Name' | translate}}" name="username" formControlName="username" required>
+                    <mat-error *ngIf="basicFormErrors.username.required">
+                        {{ 'basic.FieldsRequireds.NameRequired' | translate }}
+                    </mat-error>
+                </mat-form-field>
+            <br>
+                <mat-form-field>
+                    <input matInput placeholder="{{'BASIC.Fields.Email' | translate}}" formControlName="email" required>
+                    <mat-error *ngIf="basicFormErrors.email.required">
+                        {{ 'BASIC.FieldsRequireds.EmailRequired' | translate }}
+                    </mat-error>
+                    <mat-error *ngIf="!basicFormErrors.email.required && basicFormErrors.email.email">
+                        {{ 'BASIC.FieldsRequireds.EmailValid' | translate }}
+                    </mat-error>
+                </mat-form-field>
+
+            <br>
+
+            <mat-form-field>
+                <mat-select placeholder="{{'BASIC.COMBONAME' | translate}}" formControlName="language" (ngModelChange)="setLanguage($event)" required>
+                    <mat-option *ngFor="let lang of languages" value="{{lang.id}}">
+                        <span class="iso">{{lang.title}}</span>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        <br>
+            <div>
+                <button mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT"
+                        [disabled]="basicForm.invalid">
+                        {{ 'BASIC.BTN' | translate }}
+                </button>
+            </div>
+            </form>
+
+          
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,22 @@
+<div id="validated-mail" fxLayout="column" appPerfectScrollbar>
+
+    <div id="validated-mail-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="validated-mail-form" *appIfOnDom [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+            <div class="logo">
+                <mat-icon class="s-96">email</mat-icon>
+            </div>
+
+            <div class="title">{{ 'VALIDATED-MAIL.Title' | translate }}</div>
+
+            <div class="subtitle">
+                <p>
+                    {{ 'VALIDATED-MAIL.Sub-Title' | translate }}
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

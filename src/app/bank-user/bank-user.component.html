@@ -1,0 +1,65 @@
+ <div id="bank" fxLayout="column" fxLayoutAlign="center center">
+  <div id="bank-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+      <div id="bank-form" >
+
+          <h1>{{ 'BANK.Title' | translate }}</h1>
+
+            
+          <form name="bankForm" [formGroup]="bankForm"  (ngSubmit)="bankform(); $event.preventDefault()" #f="ngForm" novalidate>
+         
+            <mat-form-field>
+              <mat-select placeholder="{{'BANK.COMBONAME' | translate}}" formControlName="type" required>
+                  <mat-option  value="0">
+                      <span class="iso">Usuarios Simples</span>
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+
+      
+          <br>
+
+              <mat-form-field>
+                  <input matInput type="text" placeholder="{{'BANK.Fields.Bank' | translate}}" name="bank" formControlName="bank" required>
+                  <mat-error *ngIf="bankFormErrors.bank.required">
+                      {{ 'BANK.FieldsRequireds.BankRequired' | translate }}
+                  </mat-error>
+              </mat-form-field>
+          <br>
+              <mat-form-field>
+                  <input matInput placeholder="{{'BANK.Fields.Branch' | translate}}" formControlName="branch" required>
+                  <mat-error *ngIf="bankFormErrors.branch.required">
+                      {{ 'BANK.FieldsRequireds.branchrequired' | translate }}
+                  </mat-error>
+                
+              </mat-form-field>
+
+          <br>
+
+          <mat-form-field>
+            <input matInput placeholder="{{'BANK.Fields.account' | translate}}" formControlName="account" required>
+            <mat-error *ngIf="bankFormErrors.account">
+                {{ 'BANK.FieldsRequireds.accountRequired' | translate }}
+            </mat-error>
+           
+        </mat-form-field>
+        <br>
+
+
+     
+          <div>
+              <button mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT"
+                      [disabled]="bankForm.invalid">
+                      {{ 'BANK.BTN' | translate }}
+              </button>
+          </div>
+
+
+          </form>
+
+        
+      </div>
+
+  </div>
+
+</div>
