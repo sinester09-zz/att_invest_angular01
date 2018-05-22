@@ -13,6 +13,7 @@ import { CurrentUser } from "../models/current_user";
 @Injectable()
 export class AuthService {
 
+    isAdmin: boolean;
     private jwtHelper: JwtHelper = new JwtHelper();
 
     constructor(
@@ -41,20 +42,35 @@ export class AuthService {
     successfulLogin(authorizationValue : string) {
         let token = this.jwtHelper.decodeToken(authorizationValue).sub;
         let val = token.split(";");
-        
+     
         let tok = authorizationValue.substring(7);
         let user : CurrentUser = {
             id      : val[0],            
             token   : tok,
             username: val[1],
             email   : val[2],
-            lang    : val[3]
+            lang    : val[3],
+            role    : val[4]
         };
         this.storage.setCurrentUser(user);
+     
+        if(val[4]=="[ADMIN_USER]")
+    {
+
+        this.isAdmin=true;
+
+    }
+    
     }
 
     logout() {
         this.storage.setCurrentUser(null);
         this.router.navigate(['/login']);
     }
+
+
+    isAdminUser(): boolean {
+     
+        return this.isAdmin;
+      }
 }

@@ -4,4 +4,5 @@ export class CurrentUser {
     username: string;
     email: string;
     lang: string;
+    role:string;
 }

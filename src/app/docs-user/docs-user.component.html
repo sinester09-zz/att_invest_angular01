@@ -1,3 +1,36 @@
-<p>
-  docs-user works!
-</p>
+
+   <h1>{{ 'DOCS.Title' | translate }}</h1>
+
+<div *ngIf="currentFileUpload" class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+    aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+    {{progress.percentage}}%</div>
+</div>
+
+<div>
+  <p>{{ 'DOCS.DescList' | translate }}</p>
+<ul>
+  <li>{{ 'DOCS.ListoneItem' | translate }}</li>
+  <li>{{ 'DOCS.ListtwoItem' | translate }}</li>
+  <li>{{ 'DOCS.ListthirdItem' | translate }}</li>
+</ul>  
+</div>
+<div>
+<p>{{ 'DOCS.label' | translate }}</p>
+  <label class="btn btn-default">
+  <input type="file" (change)="selectFile($event)">
+</label>
+<br>
+<label class="btn btn-default">
+  <input type="file" (change)="selectFile($event)">
+</label>
+
+<br>
+<label class="btn btn-default">
+  <input type="file" (change)="selectFile($event)">
+</label>
+<br>
+</div>
+<div>
+<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">{{ 'DOCS.BTN' | translate }}</button>
+</div>

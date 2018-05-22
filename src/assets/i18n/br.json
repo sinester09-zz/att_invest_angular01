@@ -154,6 +154,23 @@
      
         "ERROR_BASIC": "Erro ao tentar cadastrar os dados de contato do usuário."
      
+    },
+
+
+
+    "DOCS": {
+        "Title": "Documentos requeridos",
+        "BTN": "Salvar",
+        "DescList": "Documentos requeridos:",  
+        "ListoneItem": "RG",
+        "ListtwoItem": "CPF",
+        "ListthirdItem":"Comprobante de Endereço",
+        "label":"Subir zip:",
+        "ERROR_BASIC": "Erro ao tentar subir os documentos"
+     
     }
 
 }
+
+
+

@@ -34,13 +34,14 @@ import { LoginComponent } from './authentication/login/login.component';
 
 import { AppStoreModule } from './store/store.module';
 
-import { AlertService, UserService, AuthService, Security, StorageService } from './services/index';
+import { AlertService, UserService, AuthService, Security, StorageService,UploadFileService } from './services/index';
 import { BasicComponent } from './basic/basic.component';
 import { DefaultLayoutComponent } from './default-layout/default-layout.component';
 import { ComplementUserComponent } from './complement-user/complement-user.component';
 import { BankUserComponent } from './bank-user/bank-user.component';
 import { DocsUserComponent } from './docs-user/docs-user.component';
-
+import { AdminComponent } from './admin/admin.component';
+import { AdminAuthGuard } from "./guards/admin-auth-guard.service";
 export function translateHttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -84,7 +85,8 @@ export function translateHttpLoaderFactory(http: HttpClient) {
         DefaultLayoutComponent,
         ComplementUserComponent,
         BankUserComponent,
-        DocsUserComponent
+        DocsUserComponent,
+        AdminComponent
     ],    
     providers: [
         AlertService,
@@ -92,7 +94,8 @@ export function translateHttpLoaderFactory(http: HttpClient) {
         Security,
         AuthInterceptor,
         AuthService,
-        StorageService
+        StorageService,
+        AdminAuthGuard
     ],
     bootstrap: [AppComponent]
 })

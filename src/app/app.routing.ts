@@ -14,6 +14,10 @@ import {ComplementUserComponent  } from './complement-user/complement-user.compo
 import { BankUserComponent } from './bank-user/bank-user.component';
 import {DocsUserComponent  } from './docs-user/docs-user.component';
 
+
+import {AdminAuthGuard} from './guards/admin-auth-guard.service';
+import { AdminComponent } from './admin/admin.component';
+
 const appRoutes: Routes = [   
 
     { path: 'register', component: RegisterComponent },
@@ -31,6 +35,16 @@ const appRoutes: Routes = [
         { path: 'bank', component: BankUserComponent, canActivate: [Security] },
         { path: 'doc', component: DocsUserComponent, canActivate: [Security] },
     ] },
+
+    {
+        path: 'admin',
+        component: AdminComponent,
+        canActivate: [AdminAuthGuard,Security]
+      },
+
+    {
+        path: '', redirectTo: 'home', pathMatch: 'full'
+    },
     { path: '**', component: Error404Component }
 ];
 

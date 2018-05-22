@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit
     loginFormErrors: any;
     loading = false;
     returnUrl: string;
+    redirectUrl: string;
 
     creds : CredenciaisDTO = {
         email: "",
@@ -34,8 +35,11 @@ export class LoginComponent implements OnInit
         private appStorage: StorageService,
         private auth: AuthService,
         private router: Router,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
+        private activatedRoute: ActivatedRoute,
+
     )
+     
     {
         this.appConfig.setConfig({
             layout: {
@@ -55,6 +59,7 @@ export class LoginComponent implements OnInit
     {
         let lang = this.appStorage.getTemporaryInLocal('lang');
         // Use a language
+     
         if(lang) {
             this.translate.use(lang);
         } else {
@@ -95,7 +100,9 @@ export class LoginComponent implements OnInit
             this.auth.successfulLogin(response.headers.get('Authorization'));
             this.appStorage.removeTemporaryInLocal('lang');
             this.appStorage.removeTemporaryInLocal('email');
-            this.router.navigate(['/home']);
+            this.activatedRoute.snapshot.queryParams['redirectTo'];
+
+           
         },
         error => {
             console.info('Error login: ', error);

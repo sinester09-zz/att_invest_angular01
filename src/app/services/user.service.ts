@@ -5,6 +5,7 @@ import { CurrentUser, NewUser } from '../models/index';
 
 @Injectable()
 export class UserService {
+    isAdmin: boolean;
     constructor(private http: HttpClient) { }
 
     getAll() {
@@ -30,4 +31,9 @@ export class UserService {
     confirmEmail(email: string, token: string) {
         return this.http.post(`${environment.API_URL}/user/confirm`, {'email': email, 'token': token});
     }
+
+
+    isAdminUser(): boolean {
+        return this.isAdmin;
+      }
 }
