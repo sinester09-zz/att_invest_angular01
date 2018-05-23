@@ -8,13 +8,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppConfigService } from '../core/services/config.service';
 import { AppSplashScreenService } from '../core/services/splash-screen.service';
 import { appAnimations } from '../core/animations';
-import { AlertService, UserService, StorageService } from '../services/index';
+import { AlertService,BasicUserService, StorageService,AuthService } from '../services/index';
 
 
 @Component({
   selector: 'basic',
   templateUrl: './basic.component.html',
-  styles: ['./basic.component.scss']
+  styles: ['./basic.component.scss'],
+  providers: [BasicUserService]
 })
 export class BasicComponent implements OnInit {
   basicFormErrors: any;
@@ -27,11 +28,12 @@ export class BasicComponent implements OnInit {
       private translate: TranslateService,
       private appConfig: AppConfigService,
       private formBuilder: FormBuilder,
-      private userService: UserService,
+      private basicservice: BasicUserService,
       private alertService: AlertService,
       private appStorage: StorageService,
       private snackBar: MatSnackBar,
-      private appSplashScreen: AppSplashScreenService
+      private appSplashScreen: AppSplashScreenService,
+      private auth: AuthService,
   )
   {
       this.languages = [
@@ -58,8 +60,8 @@ export class BasicComponent implements OnInit {
     this.basicForm = this.formBuilder.group({
       username       : ['', Validators.required],
       email          : ['', [Validators.required, Validators.email]],
-      language       : ['', Validators.required]
-  
+      language       : ['', Validators.required],
+      llave:this.auth.storage.getCurrentUser()['email']
       
   });
   
@@ -72,4 +74,29 @@ export class BasicComponent implements OnInit {
       this.translate.use(lang);
   }
 
+
+
+ basicUser() {
+    this.appSplashScreen.show();
+    console.log('Register payload: ', this.basicForm.value);
+
+    this.basicservice.createBasicUser(this.basicForm.value)
+        .subscribe(
+            data => {
+                this.alertService.success('Registration successful', true);
+                this.setLanguage(this.basicForm.value.language);
+                this.appSplashScreen.hide();
+                this.router.navigate(['/home']);
+            },
+            error => {
+                this.appSplashScreen.hide();
+                this.alertService.error(error);
+                this.snackBar.open("Erro ao tentar criar usuário. Tente novamente!", "Fechar", {
+                    duration: 15000,
+                    horizontalPosition: 'center',
+                    verticalPosition: 'top',
+                });
+            }
+    );
+}
 }

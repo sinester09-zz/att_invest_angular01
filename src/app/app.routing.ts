@@ -15,16 +15,16 @@ import { BankUserComponent } from './bank-user/bank-user.component';
 import {DocsUserComponent  } from './docs-user/docs-user.component';
 
 
-import {AdminAuthGuard} from './guards/admin-auth-guard.service';
-import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [   
 
+    
     { path: 'register', component: RegisterComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'mail-confirm', component: MailConfirmComponent },
     { path: 'validated-mail', component: ValidatedMailComponent },
     { path: 'login', component: LoginComponent },
+    { path: '',   redirectTo: 'home', pathMatch: 'full' },
     { path: '', component: DefaultLayoutComponent, children: [
         {
             path: '', redirectTo: 'home', pathMatch: 'full'
@@ -36,12 +36,7 @@ const appRoutes: Routes = [
         { path: 'doc', component: DocsUserComponent, canActivate: [Security] },
     ] },
 
-    {
-        path: 'admin',
-        component: AdminComponent,
-        canActivate: [AdminAuthGuard,Security]
-      },
-
+   
     {
         path: '', redirectTo: 'home', pathMatch: 'full'
     },

@@ -100,8 +100,8 @@ export class LoginComponent implements OnInit
             this.auth.successfulLogin(response.headers.get('Authorization'));
             this.appStorage.removeTemporaryInLocal('lang');
             this.appStorage.removeTemporaryInLocal('email');
-            this.activatedRoute.snapshot.queryParams['redirectTo'];
-
+           // this.activatedRoute.snapshot.queryParams['redirectTo'];
+           this.router.navigate(['/home']);
            
         },
         error => {

@@ -8,12 +8,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppConfigService } from '../core/services/config.service';
 import { AppSplashScreenService } from '../core/services/splash-screen.service';
 import { appAnimations } from '../core/animations';
-import { AlertService, UserService, StorageService } from '../services/index';
+import { AlertService, StorageService,AuthService, BasicUserService } from '../services/index';
 
 @Component({
   selector: 'app-bank-user',
   templateUrl: './bank-user.component.html',
-  styles: []
+  providers: [BasicUserService]
 })
 export class BankUserComponent implements OnInit {
 
@@ -26,11 +26,12 @@ export class BankUserComponent implements OnInit {
       private translate: TranslateService,
       private appConfig: AppConfigService,
       private formBuilder: FormBuilder,
-      private userService: UserService,
       private alertService: AlertService,
       private appStorage: StorageService,
       private snackBar: MatSnackBar,
-      private appSplashScreen: AppSplashScreenService
+      private appSplashScreen: AppSplashScreenService,
+      private auth :AuthService,
+      private basicservice:BasicUserService
   )
   {
     
@@ -55,7 +56,8 @@ export class BankUserComponent implements OnInit {
       type  : ['', Validators.required],
       bank  : ['', Validators.required],
       branch : ['', Validators.required],
-      account : ['', Validators.required]
+      account : ['', Validators.required],
+      llave:this.auth.storage.getCurrentUser()['email']
         
   });
   
@@ -67,4 +69,29 @@ export class BankUserComponent implements OnInit {
       // Use the selected language for translations
       this.translate.use(lang);
   }
+
+
+  bankUser() {
+    this.appSplashScreen.show();
+    console.log('Register payload: ', this.bankForm.value);
+
+    this.basicservice.createBankUser(this.bankForm.value)
+        .subscribe(
+            data => {
+                this.alertService.success('Registration successful', true);
+                this.setLanguage(this.bankForm.value.language);
+                this.appSplashScreen.hide();
+                this.router.navigate(['/home']);
+            },
+            error => {
+                this.appSplashScreen.hide();
+                this.alertService.error(error);
+                this.snackBar.open("Erro ao tentar criar usuário. Tente novamente!", "Fechar", {
+                    duration: 15000,
+                    horizontalPosition: 'center',
+                    verticalPosition: 'top',
+                });
+            }
+    );
+}
 }

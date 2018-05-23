@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { CurrentUser, NewUser } from '../models/index';
+import { CurrentUser, NewUser,BasicUser } from '../models/index';
 
 @Injectable()
 export class UserService {
-    isAdmin: boolean;
+ 
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<CurrentUser[]>('/api/users');
+        return this.http.get<BasicUser[]>('/api/users');
     }
 
     getById(id: number) {
@@ -32,8 +32,10 @@ export class UserService {
         return this.http.post(`${environment.API_URL}/user/confirm`, {'email': email, 'token': token});
     }
 
+    aprove(user: BasicUser) {
+        return this.http.put('/api/users/' + user.id, user);
+    }
 
-    isAdminUser(): boolean {
-        return this.isAdmin;
-      }
+
+    
 }

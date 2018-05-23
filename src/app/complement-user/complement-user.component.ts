@@ -8,13 +8,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppConfigService } from '../core/services/config.service';
 import { AppSplashScreenService } from '../core/services/splash-screen.service';
 import { appAnimations } from '../core/animations';
-import { AlertService, UserService, StorageService } from '../services/index';
+import { AlertService, BasicUserService, StorageService,AuthService } from '../services/index';
 
 
 @Component({
   selector: 'app-complement-user',
   templateUrl: './complement-user.component.html',
-  styles: []
+  styles: [],
+  providers:[BasicUserService]
 })
 export class ComplementUserComponent implements OnInit {
   complFormErrors: any;
@@ -26,11 +27,13 @@ export class ComplementUserComponent implements OnInit {
       private translate: TranslateService,
       private appConfig: AppConfigService,
       private formBuilder: FormBuilder,
-      private userService: UserService,
+      private basicservice: BasicUserService,
       private alertService: AlertService,
       private appStorage: StorageService,
       private snackBar: MatSnackBar,
-      private appSplashScreen: AppSplashScreenService
+      private appSplashScreen: AppSplashScreenService,
+      private auth : AuthService,
+    
   )
   {
     
@@ -60,7 +63,8 @@ export class ComplementUserComponent implements OnInit {
       zip       : ['', Validators.required],
       street  : ['', Validators.required],
       number : ['', Validators.required],
-      complement : ['', Validators.required]
+      complement : ['', Validators.required],
+      llave:this.auth.storage.getCurrentUser()['email']
         
   });
   
@@ -73,6 +77,28 @@ export class ComplementUserComponent implements OnInit {
       this.translate.use(lang);
   }
 
+  ValidateForm() {
+    this.appSplashScreen.show();
+    console.log('Register payload: ', this.complForm.value);
 
+    this.basicservice.createCompleUser(this.complForm.value)
+        .subscribe(
+            data => {
+                this.alertService.success('Registration successful', true);
+                this.setLanguage(this.complForm.value.language);
+                this.appSplashScreen.hide();
+                this.router.navigate(['/home']);
+            },
+            error => {
+                this.appSplashScreen.hide();
+                this.alertService.error(error);
+                this.snackBar.open("Erro ao tentar criar usuário. Tente novamente!", "Fechar", {
+                    duration: 15000,
+                    horizontalPosition: 'center',
+                    verticalPosition: 'top',
+                });
+            }
+    );
+}
 
 }

@@ -9,8 +9,7 @@
           <h1>{{ 'COMPL.Title' | translate }}</h1>
 
           
-    
-          <form name="complForm" [formGroup]="complForm"  (ngSubmit)="complform(); $event.preventDefault()" #f="ngForm" novalidate>
+          <form name="complForm" [formGroup]="complForm"  (ngSubmit)="ValidateForm(); $event.preventDefault()" #f="ngForm" novalidate>
             <mat-form-field>
               <mat-select placeholder="{{'COMPL.COMBONAME' | translate}}" formControlName="country" required>
                   <mat-option  value="0">

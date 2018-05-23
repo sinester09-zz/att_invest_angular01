@@ -9,6 +9,7 @@ import { AppConfigService } from '../core/services/config.service';
 import { AppSplashScreenService } from '../core/services/splash-screen.service';
 import { appAnimations } from '../core/animations';
 import { AlertService, UserService, StorageService } from '../services/index';
+import { BasicUser } from '../models/basic_user';
 
 
 @Component({
@@ -17,10 +18,8 @@ import { AlertService, UserService, StorageService } from '../services/index';
 
 })
 export class AdminComponent implements OnInit {
-  basicFormErrors: any;
-  basicForm: FormGroup;
-  languages: any;
-  selectedLanguage: any;
+ 
+  basicusers: BasicUser[];
 
   constructor(
       private router: Router,
@@ -42,11 +41,22 @@ export class AdminComponent implements OnInit {
 
 
   ngOnInit() {
-
  
-  
-  }
+    this.userService.getAll()
+    .subscribe( data => {
 
+      this.basicusers=data
+    });
+
+  };
+
+  Aprove(user: BasicUser): void {
+    this.userService.aprove(user)
+      .subscribe( data => {
+        this.basicusers = this.basicusers.filter(u => u !== user);
+      })
+  };
+  
 
 
 

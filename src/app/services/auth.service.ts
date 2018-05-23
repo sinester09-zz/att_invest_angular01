@@ -53,7 +53,7 @@ export class AuthService {
             role    : val[4]
         };
         this.storage.setCurrentUser(user);
-     
+        console.log(user);
         if(val[4]=="[ADMIN_USER]")
     {
 

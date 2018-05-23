@@ -1,5 +1,7 @@
 export class BasicUser {
-    email           : string;
-    language        : number;
-    username        : string;
+    id           : number;
+   username        : string;
+    email        : number;
+    role :string
+ 
 }

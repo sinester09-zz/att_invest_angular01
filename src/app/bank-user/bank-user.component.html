@@ -6,7 +6,7 @@
           <h1>{{ 'BANK.Title' | translate }}</h1>
 
             
-          <form name="bankForm" [formGroup]="bankForm"  (ngSubmit)="bankform(); $event.preventDefault()" #f="ngForm" novalidate>
+          <form name="bankForm" [formGroup]="bankForm"  (ngSubmit)="bankUser(); $event.preventDefault()" #f="ngForm" novalidate>
          
             <mat-form-field>
               <mat-select placeholder="{{'BANK.COMBONAME' | translate}}" formControlName="type" required>
